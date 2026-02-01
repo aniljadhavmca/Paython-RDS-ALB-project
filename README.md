@@ -125,8 +125,36 @@ PRIMARY RDS ✅ (data saved immediately)
 VIEW USERS (READ)
    ↓
 READ REPLICA ❌ (data not visible immediately)
+
+Step 1: Add FIRST record
+Now when you open /users (reading from replica):
+Replica has not caught up yet
+So user1 is NOT visible
+
+Step 2: Add SECOND record
+INSERT user2
+→ PRIMARY RDS ✅
+→ REPLICA sync starts again
+
+During this time:
+Replica finally receives previous changes
+So now it contains:
+user1 ✅
+(maybe user2 after a moment)
+
+👉 That’s why user1 suddenly appears after adding user2
 ```
 
+---
+
+##  🧠 Why this happens (Simple Explanation)
+
+- Primary RDS writes data immediately
+- Read Replica copies data asynchronously
+- There is replication lag
+- So immediate reads may not see new data
+This is called:
+- Read-after-write inconsistency
 
 ## 👨‍💻 Author
 

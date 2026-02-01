@@ -22,7 +22,7 @@ except mysql.connector.Error as err:
     sys.exit(1)
 
 # =======================
-# HOME (ADD USER)
+# HOME
 # =======================
 @app.route('/')
 def home():
@@ -57,4 +57,44 @@ def users():
 
 # =======================
 # EDIT USER FORM
-# ======
+# =======================
+@app.route('/edit-user/<int:user_id>')
+def edit_user(user_id):
+    cursor.execute("SELECT * FROM users WHERE id=%s", (user_id,))
+    user = cursor.fetchone()
+    return render_template("edit_user.html", user=user)
+
+# =======================
+# UPDATE USER
+# =======================
+@app.route('/update-user', methods=['POST'])
+def update_user():
+    cursor.execute(
+        "UPDATE users SET name=%s, email=%s WHERE id=%s",
+        (request.form['name'], request.form['email'], request.form['id'])
+    )
+    db.commit()
+    return redirect('/users')
+
+# =======================
+# DELETE USER
+# =======================
+@app.route('/delete-user/<int:user_id>')
+def delete_user(user_id):
+    cursor.execute("DELETE FROM users WHERE id=%s", (user_id,))
+    db.commit()
+    return redirect('/users')
+
+# =======================
+# HEALTH CHECK
+# =======================
+@app.route('/health')
+def health():
+    return "OK", 200
+
+# =======================
+# START SERVER  🚀🚀🚀
+# =======================
+if __name__ == "__main__":
+    print("🚀 Starting Flask server...")
+    app.run(host="0.0.0.0", port=80, debug=True)

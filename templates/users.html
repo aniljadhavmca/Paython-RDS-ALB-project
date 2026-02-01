@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
-<head><title>Users</title></head>
+<head>
+    <title>Users</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
 <body>
+<div class="container">
 <h2>Users</h2>
 <table border="1">
 <tr><th>ID</th><th>Name</th><th>Email</th><th>Action</th></tr>
@@ -18,5 +22,6 @@
 {% endfor %}
 </table>
 <a href="/">Back</a>
+</div>
 </body>
 </html>

@@ -58,8 +58,9 @@ INSERT INTO users (name, email) VALUES ('Anil', 'anil@example.com');
 ---
 
 ## ⚙️ Installation Steps
-
+sudo yum install git -y
 cd python-rds-app
+pip3 install -r requirements.txt
 pip install -r requirements.txt
 
 ---

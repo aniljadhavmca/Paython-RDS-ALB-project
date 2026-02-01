@@ -1,13 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head><title>Add User</title></head>
-<body>
-<h2>Add User</h2>
-<form method="POST" action="/add-user">
-<input name="name" placeholder="Name" required><br><br>
-<input name="email" placeholder="Email" required><br><br>
-<button type="submit">Add User</button>
-</form>
-<a href="/users">View Users</a>
+<head>
+  <title>Add User</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="center-page">
+
+<div class="card">
+  <h2>Add User</h2>
+
+  <form method="POST" action="/add-user">
+    <input type="text" name="name" placeholder="Name" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <button type="submit">Add User</button>
+  </form>
+
+  <a href="/users" class="nav-link">View Users</a>
+</div>
+
 </body>
 </html>

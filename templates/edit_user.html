@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head><title>Edit User</title></head>
-<body>
-<h2>Edit User</h2>
-<form method="POST" action="/update-user">
-<input type="hidden" name="id" value="{{ user.id }}">
-<input name="name" value="{{ user.name }}" required><br><br>
-<input name="email" value="{{ user.email }}" required><br><br>
-<button type="submit">Update</button>
-</form>
-<a href="/users">Back</a>
+<head>
+  <title>Edit User</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="center-page">
+
+<div class="card">
+  <h2>Edit User</h2>
+
+  <form method="POST" action="/update-user">
+    <input type="hidden" name="id" value="{{ user.id }}">
+    <input type="text" name="name" value="{{ user.name }}" required>
+    <input type="email" name="email" value="{{ user.email }}" required>
+    <button type="submit">Update User</button>
+  </form>
+
+  <a href="/users" class="nav-link">⬅ Back</a>
+</div>
+
 </body>
 </html>

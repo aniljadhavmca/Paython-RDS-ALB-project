@@ -48,7 +48,7 @@ Paython-RDS-ALB-project/
 └── static/                # Static assets
     └── css/
         └── style.css      # Application CSS
-
+```
 ---
 
 ## 🛠️ Prerequisites
@@ -56,7 +56,7 @@ Paython-RDS-ALB-project/
 - AWS EC2 instance
 - AWS RDS MySQL
 - Python 3.8+
-- pip installed
+- pip3 installed
 
 Security Groups:
 - EC2: Allow HTTP (80)

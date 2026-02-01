@@ -9,6 +9,17 @@
     background: linear-gradient(135deg, #141e30, #243b55);
   }
   
+
+.search-form {
+    display: flex;
+    width: 50%;
+  }
+  .search-form button {
+    padding: 9px !important;
+    height: 40px;
+    margin: 0 10px;
+  }
+  
   .center-page {
     display: flex;
     justify-content: center;

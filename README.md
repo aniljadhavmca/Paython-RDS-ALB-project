@@ -34,7 +34,8 @@ Browser → EC2 (Flask App) → AWS RDS MySQL
 
 ## 📁 Project Structure
 
-python-rds-app/
+```text
+Paython-RDS-ALB-project/
 │
 ├── app.py                 # Main Flask application
 ├── requirements.txt       # Python dependencies

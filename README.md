@@ -116,6 +116,18 @@ Security Groups:
 
 ---
 
+## ❗ What’s happening (VERY IMPORTANT)
+```pgsql
+ADD USER (WRITE)
+   ↓
+PRIMARY RDS ✅ (data saved immediately)
+
+VIEW USERS (READ)
+   ↓
+READ REPLICA ❌ (data not visible immediately)
+```
+
+
 ## 👨‍💻 Author
 
 - Created by Anil

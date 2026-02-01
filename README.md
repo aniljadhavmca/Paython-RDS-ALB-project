@@ -18,6 +18,8 @@ Browser → EC2 (Flask App) → AWS RDS MySQL
 - View users list
 - Edit existing users
 - Delete users
+- Search Users
+- Paginations
 - Health check endpoint (`/health`)
 
 ---

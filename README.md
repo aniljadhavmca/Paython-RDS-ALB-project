@@ -1,2 +1,2 @@
-# Node.js-RDS-ALB-project
-NODE RDS Basic connection
+# Paython-RDS-ALB-project
+Paython RDS Basic connection

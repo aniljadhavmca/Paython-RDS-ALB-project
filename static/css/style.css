@@ -19,7 +19,7 @@
     height: 40px;
     margin: 0 10px;
   }
-  
+
   .center-page {
     display: flex;
     justify-content: center;
@@ -137,6 +137,7 @@
     background: #243b55;
     color: white;
     border-radius: 6px;
+    text-decoration: none;
     text-decoration: none;
   }
   

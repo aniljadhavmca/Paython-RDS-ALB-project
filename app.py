@@ -5,7 +5,7 @@ import sys
 app = Flask(__name__)
 
 # =======================
-# RDS DATABASE CONNECTION
+# DATABASE CONNECTION
 # =======================
 try:
     db = mysql.connector.connect(
@@ -47,13 +47,51 @@ def add_user():
     return redirect('/users')
 
 # =======================
-# LIST USERS
+# USERS (SEARCH + PAGINATION)
 # =======================
 @app.route('/users')
 def users():
-    cursor.execute("SELECT * FROM users")
+    search = request.args.get('q', '')
+    page = int(request.args.get('page', 1))
+    limit = 5
+    offset = (page - 1) * limit
+
+    # Count total users
+    if search:
+        cursor.execute(
+            "SELECT COUNT(*) AS total FROM users WHERE name LIKE %s OR email LIKE %s",
+            (f"%{search}%", f"%{search}%")
+        )
+    else:
+        cursor.execute("SELECT COUNT(*) AS total FROM users")
+
+    total = cursor.fetchone()['total']
+    total_pages = (total + limit - 1) // limit
+
+    # Fetch users
+    if search:
+        cursor.execute(
+            """SELECT * FROM users
+               WHERE name LIKE %s OR email LIKE %s
+               ORDER BY id DESC
+               LIMIT %s OFFSET %s""",
+            (f"%{search}%", f"%{search}%", limit, offset)
+        )
+    else:
+        cursor.execute(
+            "SELECT * FROM users ORDER BY id DESC LIMIT %s OFFSET %s",
+            (limit, offset)
+        )
+
     users = cursor.fetchall()
-    return render_template("users.html", users=users)
+
+    return render_template(
+        "users.html",
+        users=users,
+        page=page,
+        total_pages=total_pages,
+        search=search
+    )
 
 # =======================
 # EDIT USER FORM
@@ -93,7 +131,7 @@ def health():
     return "OK", 200
 
 # =======================
-# START SERVER  🚀🚀🚀
+# START SERVER
 # =======================
 if __name__ == "__main__":
     print("🚀 Starting Flask server...")

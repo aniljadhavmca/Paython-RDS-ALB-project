@@ -1,27 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Users</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <title>Users</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
+
 <div class="container">
-<h2>Users</h2>
-<table border="1">
-<tr><th>ID</th><th>Name</th><th>Email</th><th>Action</th></tr>
-{% for u in users %}
-<tr>
-<td>{{ u.id }}</td>
-<td>{{ u.name }}</td>
-<td>{{ u.email }}</td>
-<td>
-<a href="/edit-user/{{ u.id }}">Edit</a> |
-<a href="/delete-user/{{ u.id }}">Delete</a>
-</td>
-</tr>
-{% endfor %}
-</table>
-<a href="/">Back</a>
+  <h2>Users Stored in AWS RDS</h2>
+
+  <!-- Search -->
+  <form method="GET" action="/users" class="search-form">
+    <input type="text" name="q" placeholder="Search name or email"
+           value="{{ search }}">
+    <button type="submit" class="btn btn-edit">Search</button>
+  </form>
+
+  <!-- Table -->
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Action</th>
+    </tr>
+
+    {% for u in users %}
+    <tr>
+      <td>{{ u.id }}</td>
+      <td>{{ u.name }}</td>
+      <td>{{ u.email }}</td>
+      <td>
+        <a href="/edit-user/{{ u.id }}" class="btn btn-edit">Edit</a>
+        <a href="/delete-user/{{ u.id }}" class="btn btn-delete"
+           onclick="return confirm('Delete user?')">Delete</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <!-- Pagination -->
+  <div class="pagination">
+    {% if page > 1 %}
+      <a href="/users?page={{ page-1 }}&q={{ search }}" class="btn btn-edit">⬅ Prev</a>
+    {% endif %}
+
+    <span>Page {{ page }} of {{ total_pages }}</span>
+
+    {% if page < total_pages %}
+      <a href="/users?page={{ page+1 }}&q={{ search }}" class="btn btn-edit">Next ➡</a>
+    {% endif %}
+  </div>
+
+  <a href="/" class="nav-link">⬅ Back</a>
 </div>
+
 </body>
 </html>

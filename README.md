@@ -11,16 +11,42 @@ Browser → EC2 (Flask App) → AWS RDS MySQL
 
 ---
 
+
+## ✨ Features
+
+- Add new users
+- View users list
+- Edit existing users
+- Delete users
+- Health check endpoint (`/health`)
+
+---
+
+## 🧰 Technology Stack
+
+- **Backend**: Python, Flask
+- **Database**: AWS RDS (MySQL)
+- **Server**: AWS EC2
+- **UI**: HTML, CSS
+- **OS**: Amazon Linux
+
+---
+
 ## 📁 Project Structure
 
 python-rds-app/
-├── app.py
-├── requirements.txt
-├── templates/
-│   ├── index.html
-│   ├── users.html
-│   └── edit_user.html
-└── static/
+│
+├── app.py                 # Main Flask application
+├── requirements.txt       # Python dependencies
+│
+├── templates/             # HTML templates (Jinja2)
+│   ├── index.html         # Add User page
+│   ├── users.html         # View Users page
+│   └── edit_user.html     # Edit User page
+│
+└── static/                # Static assets
+    └── css/
+        └── style.css      # Application CSS
 
 ---
 

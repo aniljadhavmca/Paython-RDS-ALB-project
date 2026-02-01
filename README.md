@@ -40,34 +40,33 @@ Security Groups:
 ## 🗄️ SQL Commands
 
 ### Create Database
-CREATE DATABASE testdb;
+- CREATE DATABASE testdb;
 
 ### Use Database
-USE testdb;
+- USE testdb;
 
 ### Create Table
-CREATE TABLE users (
+- CREATE TABLE users (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(100) NOT NULL,
   email VARCHAR(100) NOT NULL
 );
 
 ### Insert Sample Data
-INSERT INTO users (name, email) VALUES ('Anil', 'anil@example.com');
+- INSERT INTO users (name, email) VALUES ('Anil', 'anil@example.com');
 
 ---
 
 ## ⚙️ Installation Steps
-sudo yum install git -y
-cd python-rds-app
-pip3 install -r requirements.txt
-pip install -r requirements.txt
+- sudo yum install git -y
+- cd python-rds-app
+- pip3 install -r requirements.txt
 
 ---
 
 ## ▶️ Run Application
 
-sudo python3 app.py
+- sudo python3 app.py
 
 ---
 
@@ -90,4 +89,4 @@ sudo python3 app.py
 
 ## 👨‍💻 Author
 
-Created by Anil
+- Created by Anil
